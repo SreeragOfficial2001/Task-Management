@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import API from "../api"; // Axios instance
+import API from "../api";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
@@ -48,7 +48,9 @@ const Register = () => {
 
       setTimeout(() => navigate("/"), 2000);
     } catch (err) {
-      setError(err.response?.data?.error || "Registration failed. Please try again.");
+      setError(
+        err.response?.data?.error || "Registration failed. Please try again."
+      );
     }
   };
 
@@ -62,12 +64,20 @@ const Register = () => {
       <div className="relative z-10 flex flex-col flex-1">
         <div className="flex justify-between items-center px-6 py-4">
           <div className="text-xl font-bold flex items-center gap-2">
-            <img src="/Vector.png" alt="Logo" className="w-6 h-6 object-contain" />
+            <img
+              src="/Vector.png"
+              alt="Logo"
+              className="w-6 h-6 object-contain"
+            />
             <span>Listify</span>
           </div>
           <div className="space-x-6 text-sm text-gray-600">
-            <a href="#" className="hover:underline">About us</a>
-            <a href="#" className="hover:underline">Contacts</a>
+            <a href="#" className="hover:underline">
+              About us
+            </a>
+            <a href="#" className="hover:underline">
+              Contacts
+            </a>
           </div>
         </div>
 
@@ -80,7 +90,9 @@ const Register = () => {
             </p>
 
             {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
-            {success && <p className="text-green-600 text-sm mb-2">{success}</p>}
+            {success && (
+              <p className="text-green-600 text-sm mb-2">{success}</p>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-4 text-left">
               <input
@@ -102,7 +114,6 @@ const Register = () => {
                 className="w-full border-b border-gray-400 bg-transparent p-2 text-sm focus:outline-none focus:border-black"
               />
 
-              {/* Password Field */}
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
@@ -121,7 +132,6 @@ const Register = () => {
                 </span>
               </div>
 
-              {/* Confirm Password Field */}
               <div className="relative">
                 <input
                   type={showConfirm ? "text" : "password"}
@@ -149,7 +159,10 @@ const Register = () => {
                 </button>
                 <p className="mt-4 text-sm text-gray-700">
                   Already have an account?{" "}
-                  <Link to="/" className="text-blue-600 hover:underline font-semibold">
+                  <Link
+                    to="/"
+                    className="text-blue-600 hover:underline font-semibold"
+                  >
                     Login
                   </Link>
                 </p>

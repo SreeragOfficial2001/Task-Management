@@ -15,7 +15,7 @@ const Dashboard = () => {
   const [repeatType, setRepeatType] = useState("Daily");
   const [tags, setTags] = useState(["Daily Routine", "Study"]);
   const [customTag, setCustomTag] = useState("");
-  const [viewMode, setViewMode] = useState("form"); // 'form' or 'list'
+  const [viewMode, setViewMode] = useState("form");
   const [taskList, setTaskList] = useState([]);
 
   useEffect(() => {
@@ -29,9 +29,16 @@ const Dashboard = () => {
   };
 
   const colorOptions = [
-    "#a8e6cf", "#fbc4ab", "#ffd3b6", "#ffffd1",
-    "#caffbf", "#9bf6ff", "#bdb2ff", "#ffc6ff",
-    "#ffadad", "#fef9c3"
+    "#a8e6cf",
+    "#fbc4ab",
+    "#ffd3b6",
+    "#ffffd1",
+    "#caffbf",
+    "#9bf6ff",
+    "#bdb2ff",
+    "#ffc6ff",
+    "#ffadad",
+    "#fef9c3",
   ];
 
   const handleSubmit = () => {
@@ -44,7 +51,7 @@ const Dashboard = () => {
       repeatType,
       tags,
       date: calendarDate,
-      completed: false
+      completed: false,
     };
 
     setTaskList([...taskList, newTask]);
@@ -69,10 +76,13 @@ const Dashboard = () => {
 
   return (
     <div className="flex flex-col lg:flex-row min-h-screen text-gray-800 font-sans">
-      {/* Sidebar */}
       <aside className="w-full lg:w-1/5 bg-white p-4 border-b lg:border-b-0 lg:border-r overflow-y-auto">
         <div className="text-2xl font-bold mb-6 flex items-center gap-2">
-          <img src="/Vector.png" alt="Logo" className="w-6 h-6 object-contain" />
+          <img
+            src="/Vector.png"
+            alt="Logo"
+            className="w-6 h-6 object-contain"
+          />
           Listify
         </div>
 
@@ -99,9 +109,7 @@ const Dashboard = () => {
         </div>
       </aside>
 
-      {/* Main */}
       <main className="flex-1 p-4 sm:p-6 md:p-8 bg-gray-50 relative">
-        {/* Top Icons + Logout */}
         <div className="absolute top-4 right-4 sm:right-6 flex gap-3 sm:gap-4 text-xl text-gray-600 items-center z-10">
           <FaMoon />
           <BsPersonCircle />
@@ -115,7 +123,9 @@ const Dashboard = () => {
 
         {viewMode === "form" ? (
           <>
-            <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6">New Task 🌀</h2>
+            <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6">
+              New Task 🌀
+            </h2>
 
             <div className="bg-white rounded-xl p-4 sm:p-6 shadow-md">
               <input
@@ -157,7 +167,9 @@ const Dashboard = () => {
                       <button
                         key={type}
                         className={`px-4 py-1 border rounded-full ${
-                          repeatType === type ? "bg-black text-white" : "bg-white text-gray-600"
+                          repeatType === type
+                            ? "bg-black text-white"
+                            : "bg-white text-gray-600"
                         }`}
                         onClick={() => setRepeatType(type)}
                       >
@@ -166,20 +178,32 @@ const Dashboard = () => {
                     ))}
                   </div>
                   <div className="flex gap-1 text-xs text-gray-600 flex-wrap">
-                    {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((day) => (
-                      <div key={day} className="px-2 py-1 bg-gray-100 rounded">
-                        {day}
-                      </div>
-                    ))}
+                    {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map(
+                      (day) => (
+                        <div
+                          key={day}
+                          className="px-2 py-1 bg-gray-100 rounded"
+                        >
+                          {day}
+                        </div>
+                      )
+                    )}
                   </div>
-                  <p className="text-xs mt-2 text-gray-400">Repeat: Every {repeatType.toLowerCase()}</p>
+                  <p className="text-xs mt-2 text-gray-400">
+                    Repeat: Every {repeatType.toLowerCase()}
+                  </p>
                 </div>
 
                 <div className="flex-1">
-                  <h3 className="font-semibold mb-2">Set a tag for your task</h3>
+                  <h3 className="font-semibold mb-2">
+                    Set a tag for your task
+                  </h3>
                   <div className="flex gap-2 flex-wrap">
                     {tags.map((tag, i) => (
-                      <span key={i} className="px-3 py-1 bg-gray-100 rounded-full text-sm">
+                      <span
+                        key={i}
+                        className="px-3 py-1 bg-gray-100 rounded-full text-sm"
+                      >
                         {tag}
                       </span>
                     ))}
@@ -201,7 +225,6 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {/* Submit Button */}
             <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-20">
               <button
                 onClick={handleSubmit}
@@ -213,7 +236,9 @@ const Dashboard = () => {
           </>
         ) : (
           <>
-            <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6">Today</h2>
+            <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6">
+              Today
+            </h2>
             <div className="flex flex-col gap-4">
               {taskList.map((task, index) => (
                 <div
@@ -228,18 +253,23 @@ const Dashboard = () => {
                     onChange={() => toggleTaskCompletion(index)}
                   />
                   <div>
-                    <p className={`${task.completed ? "line-through" : ""} font-medium`}>
+                    <p
+                      className={`${
+                        task.completed ? "line-through" : ""
+                      } font-medium`}
+                    >
                       {task.title}
                     </p>
                     {task.description && (
-                      <p className="text-sm text-gray-700">{task.description}</p>
+                      <p className="text-sm text-gray-700">
+                        {task.description}
+                      </p>
                     )}
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Add Button */}
             <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-20">
               <button
                 onClick={() => setViewMode("form")}
